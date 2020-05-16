@@ -1,6 +1,18 @@
-extends layout
 
+extends layout
+block styles
+  link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700,900', rel='stylesheet')
+  link(rel='stylesheet', href='/stylesheets/404.css')
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  //- h1= message
+  //- h2= error.status
+  //- pre #{error.stack}
+  #notfound
+    .notfound
+      .notfound-404
+        h1 Oops!
+      h2 404 - Page not found
+      p
+        | The page you are looking for might have been removed had its name changed or is temporarily unavailable.
+      a(href='#') Go To Homepage
+
