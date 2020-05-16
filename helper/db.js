@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 module.exports = () => {
 
     mongoose.connect('mongodb+srv://movie_user:qwerty123@movie-api-aytcl.mongodb.net/test',
-        { useNewUrlParser: true , useUnifiedTopology: true}
+        { useNewUrlParser: true , useUnifiedTopology: true, useCreateIndex:true}
+
         );
 
     mongoose.connection.on('open', () => {
