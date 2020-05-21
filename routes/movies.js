@@ -105,7 +105,7 @@ router.delete('/:movie_id', (req,res,next) => {
 
 
 router.post('/', (req, res, next) => {
-  //const { title, category, imdb_score, year, country } = req.body;
+  // const { title, category, imdb_score, year, country } = req.body;
   // const movie = new Movie({
   //   title: title,
   //   imdb_score: imdb_score,

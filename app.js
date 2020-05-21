@@ -6,11 +6,16 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const moviesRouter = require('./routes/movies');
 const directorsRouter = require('./routes/directors');
+const middleWareRouter = require('./middleware/verifytoken');
 
 const app = express();
 
 // mongoDB connection route nad start
 const db = require('./helper/db')();
+
+// config
+const config = require('./config');
+app.set('api_secret_key', config.api_secret_key);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,6 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', middleWareRouter);
 app.use('/api/movies', moviesRouter);
 app.use('/api/directors', directorsRouter);
 

@@ -13,4 +13,7 @@ module.exports = () => {
     mongoose.connection.on('error', (err) => {
         console.log("XATO: Mongo DB Bog'lanmadi!!!", err)
     });
+
+    mongoose.Promise = global.Promise;
+
 }

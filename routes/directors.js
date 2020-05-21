@@ -27,6 +27,63 @@ router.post('/', (req, res, next) => {
 
 });*/
 
+router.get('/:directory_id/best10movie', (req, res, next) => {
+    const promise = Director.aggregate([
+        {
+            $match: {
+                '_id': mongoose.Types.ObjectId(req.params.directory_id)
+            }
+        },
+        {
+            $lookup: {
+                from: 'movies',
+                localField: '_id',
+                foreignField: 'directory_id',
+                as: 'movies'
+            }
+        },
+        {
+            $unwind: '$movies'
+        },
+        {
+            $sort: {
+                'movies.imdb_score': -1
+            }
+        },
+        {
+            $limit: 10
+        },
+        {
+            $group:{
+                _id: {
+                    _id: '$_id'
+                },
+                movies: {
+                    $push: '$movies'
+                }
+            }
+        },
+        {
+            $project: {
+                _id: false,
+                movies: '$movies'
+            }
+        }
+
+
+
+    ]);
+
+
+    promise.then((data) => {
+        res.json(data);
+    }).catch((err) => {
+        res.json(err);
+    });
+
+});
+
+
 router.get('/', (req, res, next) => {
     const promise = Director.aggregate([
         {
