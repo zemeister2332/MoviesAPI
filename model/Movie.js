@@ -6,7 +6,7 @@ const MovieSchema = new Schema({
     title: {
         type: String,
         required: [true, '`{PATH} qismi majburiy!!!`'],
-        unique: true,
+        //unique: true,
         maxlength: 15,
         min: 3
 

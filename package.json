@@ -1,9 +1,10 @@
 {
   "name": "movieapi",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha --exit --recursive --timeout 10000"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -15,5 +16,10 @@
     "mongoose": "^5.9.14",
     "morgan": "~1.9.1",
     "pug": "^2.0.4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^7.2.0"
   }
 }

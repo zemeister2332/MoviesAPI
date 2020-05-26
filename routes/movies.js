@@ -96,7 +96,7 @@ router.delete('/:movie_id', (req,res,next) => {
         if (!movie){
             next({message: 'Movie Topilmadi!!!', code: 123});
         }
-        res.json(movie);
+        res.json( {status: 1} );
     }).catch((err) => {
         res.json(err);
     });
